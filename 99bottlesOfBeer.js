@@ -17,6 +17,7 @@ function beer () {
     numberOfBottles--;
 
 }
+
 console.log("No more bottles of beer on the wall, no more bottles of beer. Go to the store and buy some beer, 99 bottles of beer on the wall.");
 
 }
