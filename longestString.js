@@ -160,6 +160,7 @@ let isPalindrome = (str) => {
   let revString = "";
 
   for (let char of str) {
+
     revString = char + revString;
   }
 
@@ -176,26 +177,29 @@ let reverseInt = (int) => {
 
 
   let reverse = int.toString().split("").reverse().join("");
-
+  // return reverse;
   return parseInt(reverse);
 }
 
-console.log(reverseInt(54321));
+// console.log(reverseInt(54321));
 
 
 let capitalizeLetters = (str) => {
   let sentence = str.toLowerCase().split(" ");
+  // console.log(sentence);
 
   for (let i = 0; i < sentence.length; i++) {
 
-    // console.log(sentence[i]);
+    console.log(sentence[i]);
+
 
     sentence[i] = sentence[i].slice(0, 1).toUpperCase() +  //substring looks at the first character; log shows ["i","l","j"] then add to upper and the rest o
       sentence[i].slice(1);                                   //decided to replace substring with slice
 
   }
 
-  return sentence;
+  return sentence.join(' ');
 }
 
-console.log(capitalizeLetters('I lOve jAVascript'));
+// console.log(capitalizeLetters('I lOve jAVascript'));
+
