@@ -190,3 +190,53 @@ let biggest = vals.reduce((acc, val) => {
 }, 11)
 
 console.log(biggest);
+
+
+
+let filterEvens = (array) => {
+  let newArray = array.filter(item => item % 2 === 0);
+  return newArray;
+}
+
+console.log(filterEvens([1, 2, 3, 4, 5, 6]));
+
+
+let getEvenNumbers = (array) => {
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] % 2 === 0) {
+      console.log(array[i]);
+    }
+  }
+}
+
+// getEvenNumbers([7, 8, 9, 10, 11, 12]);
+
+//return an array of its values plus the value's index
+//map creates a new array with the results of the calling the function on every element in the calling array
+
+let selfPlusIndex = (array) => {
+  let newArray = array.map((item, i) => item + i)
+  return newArray;
+}
+
+// console.log(selfPlusIndex([1, 2, 3]));
+
+
+
+
+
+let letterCounter = (array) => {
+
+  let newArray = []
+  for (item of array) {
+    if (newArray[item] === undefined) {
+      newArray[item] = 1;
+    } else {
+      newArray[item]++;
+    }
+  }
+  return newArray;
+}
+
+console.log(letterCounter(['a', 'a', 'a', 'b', 'c', 'c']));
