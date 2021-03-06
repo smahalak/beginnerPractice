@@ -203,3 +203,32 @@ let capitalizeLetters = (str) => {
 
 // console.log(capitalizeLetters('I lOve jAVascript'));
 
+
+
+
+// Staircase
+
+function staircase(n) {
+
+  for (let i = 0; i < n; i++) {
+    let string = "";
+    for (j = 0; j < n - i - 1; j++) {
+      string += " ";
+    }
+    for (let k = 0; k < i + 1; k++) {
+      string += "#";
+    }
+    console.log(string);
+  }
+}
+
+// N = 4
+// sss#  i=0, s=3, #=1
+// ss##  i=1, s=2, #=2
+// s###  i=2, s=3, #=3
+// ####  i=3, s=0, #=4
+
+// S = N - i - 1
+// # = i + 1
+
+staircase(4);
