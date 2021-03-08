@@ -21,6 +21,7 @@ let addValues2 = (arr) => {
 
 // console.log(addValues2([55, 2, 2]));
 
+
 // 2 Write a function that returns the average in an array of numbers
 
 let averageNum = (arr) => {
@@ -47,6 +48,8 @@ let findLongestWord = (str) => {
 }
 // console.log(findLongestWord("Cool kids play on the javascript playground"));
 
+
+
 // 4 Write a function that counts the number of vowels in a string
 
 let vowelCounter = (word) => {
@@ -70,23 +73,92 @@ let vowelCounter = (word) => {
 // console.log(commonValues(arr1, arr2));
 // returns: [ 'a', 'b', 'c' ]
 
-let commonValues = (arr1, arr2) => {
-    let common = [];
+// let commonValues = (arr1, arr2) => {
+//     let common = [];
 
-    for (let i = 0; i < arr1.length; i++) {
+//     for (let i = 0; i < arr1.length; i++) {
 
-        for (let j = 0; j < arr2.length; j++) {
-            if (arr1[i] === arr2[j]) {
-                common.push(arr1[i]);
+//         for (let j = 0; j < arr2.length; j++) {
+//             if (arr1[i] === arr2[j]) {
+//                 common.push(arr1[i]);
+//             }
+//         }
+//     }
+//     return common;
+
+// }
+
+// console.log(commonValues(["a", "a", "b", "b", "c", "y"], ["a", "a", "b", "b", "c", "z"]));
+
+
+const commonValues = (arr1, arr2) => {
+    let matches = [];
+    let uniqueChars = [];
+
+    if (arr1.length >= arr2.length) {
+        for (let i = 0; i < arr1.length; i++) {
+            if (arr2.indexOf(arr1[i]) !== -1) {
+                matches.push(arr1[i]);
+            }
+        }
+    } else {
+        for (let i = 0; i < arr2.length; i++) {
+            if (arr1.indexOf(arr2[i]) !== -1) {
+                matches.push(arr2[i]);
             }
         }
     }
-    return common;
+    matches.forEach((item) => {
+        if (!uniqueChars.includes(item)) {
+            uniqueChars.push(item);
+        }
+    });
+    return uniqueChars;
+};
 
+// console.log(commonValues(["a", "a", "b", "b", "c", "y"], ["a", "a", "b", "b", "c", "z"]));
+
+
+let commonVal = (arr1, arr2) => {
+    let matches = [];
+    let unique = [];
+
+    for (let i = 0; i < arr1.length; i++) {
+        if (arr2.indexOf(arr1[i]) !== -1) {
+            matches.push(arr1[i]);
+        } else {
+            for (let j = 0; j < arr2.length; j++) {
+                if (arr1.indexOf(arr2[i]) !== -1) {
+                    matches.push(arr2[i]);
+                }
+            }
+        }
+
+        matches.forEach((item) => {
+            if (!unique.includes(item)) {
+                unique.push(item);
+            }
+        });
+    }
+    return unique;
 }
 
-console.log(commonValues(["a", "a", "b", "b", "c", "y"], ["a", "a", "b", "b", "c", "z"]));
+// console.log(commonVal(["a", "a", "b", "b", "c", "y"], ["a", "a", "b", "b", "c", "z"]));
 
+
+let commonVals = (arr1, arr2) => {
+    let matches = [];
+
+    for (let i = 0; i < arr1.length; i++) {
+        if (arr2.indexOf(arr1[i]) !== -1) {
+            matches.push(arr1[i])
+        }
+    }
+
+    return matches;
+}
+
+console.log(commonVals(["a", "a", "b", "b", "c", "y"], ["a", "a", "b", "b", "c", "z"]));
 
 // 2 Write a function that returns the unique values of two arrays
 // let arr1 = ["a", "a", "b", "b", "c", "y"];
@@ -103,10 +175,41 @@ console.log(commonValues(["a", "a", "b", "b", "c", "y"], ["a", "a", "b", "b", "c
 // console.log(removeVowels("Mitchell"));
 // returns: Mtchll
 
+let removeVowels = (word) => {
+    word = word.toLowerCase();
+    let newWord = '';
+
+    for (let i = 0; i <= word.length; i++) {
+        if (word[i] !== "a" && word[i] !== "e" && word[i] !== "i" && word[i] !== "o" && word[i] !== "u") {
+            newWord += word[i];
+        }
+    }
+    return newWord;
+}
+
+// console.log(removeVowels('Mitchell'));
+
+
 // 5 Given an array of objects, write a function that returns the object that has the fewest calories
 // let objects = [{ calories: 75 }, { calories: 70 }, { calories: 80 }];
 // console.log(fewestCalories(objects));
 // returns: { calories: 70 }
+
+let fewestCalories = (arr) => {
+    let min = arr[0];
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].calories < min.calories) {
+            min = arr[i];
+        }
+    }
+    return min;
+}
+
+let objects = [{ calories: 75 }, { calories: 70 }, { calories: 80 }];
+// console.log(fewestCalories(objects));
+
+
 
 // 6 Fizzbuzz - Starting at 1, count up to a number (parameter) and console.log the following:
 // Multiples of three - “fizz”
@@ -114,8 +217,51 @@ console.log(commonValues(["a", "a", "b", "b", "c", "y"], ["a", "a", "b", "b", "c
 // Multiples of three && five - “fizzbuzz”
 // All others return the current number
 
+function hammerTime() {
+
+    let output = [];
+
+    for (let count = 1; count < 101; count++) {
+        if (count % 15 === 0) {
+            output.push("hammertime");
+        }
+        else if (count % 3 === 0) {
+            output.push("hammer");
+        }
+        else if (count % 5 === 0) {
+            output.push("time");
+        } else {
+            output.push(count);
+        }
+    }
+    console.log(output)
+
+}
+
+// hammerTime();
+
+
+
 // 7 Write a function that determines whether a number is prime
 // A number is prime if it is only divisible by 1 and itself
+
+let isPrime = (num) => {
+
+    if (num < 2) {
+        return 'not a prime number'
+    }
+
+    for (let i = 2; i < num; i++) {
+        if (num % i === 0) {
+            return 'not a prime number'
+        } else {
+            return 'prime number'
+        }
+    }
+
+}
+
+// console.log(isPrime(5));
 
 // 8 Write a function that determines whether a string is a palindrome
 // A palindrome is a word that has the same spelling forward and backward
@@ -134,21 +280,35 @@ console.log(commonValues(["a", "a", "b", "b", "c", "y"], ["a", "a", "b", "b", "c
 // console.log(reverseString4("javascript is cool"));
 
 
-let isPalindrome = (str) => {
+// let isPalindrome = (str) => {
 
-    let revString = "";
+//     let revString = "";
 
-    for (let char of str) {
+//     for (let char of str) {
 
-        revString = char + revString;
+//         revString = char + revString;
+//     }
+
+//     return revString === str;
+
+// }
+
+
+// console.log(isPalindrome("racecar"));
+
+let reverseString = (str) => {
+
+    let reverse = "";
+
+    for (let i = str.length - 1; i >= 0; i--) {
+
+        reverse = reverse + str[i];
     }
-
-    return revString === str;
-
+    return reverse === str;
 }
 
 
-console.log(isPalindrome("racecar"));
+// console.log(reverseString('racecar'));
 
 // Level Three
 // Write a function that determines whether two strings are an anagram

@@ -80,10 +80,6 @@ let largestOfFour2 = (array) => {
 
 }
 
-
-
-
-
 console.log(largestOfFour2([
   [4, 5, 1, 3],
   [13, 27, 18, 26],
