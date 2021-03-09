@@ -19,8 +19,22 @@ let addValues2 = (arr) => {
     return sum;
 }
 
+
+
 // console.log(addValues2([55, 2, 2]));
 
+
+let addStuff = (arr) => {
+    let count = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+        count += arr[i]
+    }
+    return count;
+}
+
+let numbers = [1, 2, 3, 4, 5]
+console.log(addStuff(numbers));
 
 // 2 Write a function that returns the average in an array of numbers
 
@@ -33,6 +47,17 @@ let averageNum = (arr) => {
 }
 // console.log(averageNum([5, 2, 2]));
 
+
+const findAverage = (arrOfNum) => {
+    return arrOfNum.reduce((accumulator, currentValue) => {
+        return accumulator += currentValue
+    }) / arrOfNum.length
+}
+
+let array = [1, 2, 3, 4, 5]
+console.log(findAverage(array));
+
+
 // 3 Write a function that returns the longest string in an array of strings
 
 let findLongestWord = (str) => {
@@ -44,9 +69,38 @@ let findLongestWord = (str) => {
             longest = word;
         }
     }
-    return longest.length;
+    return longest;
 }
 // console.log(findLongestWord("Cool kids play on the javascript playground"));
+
+
+const findLongestString = (anArrayOfStrings) => {
+    return anArrayOfStrings.reduce((accumulator, currentValue) => {
+        return currentValue.length > accumulator.length ? currentValue : accumulator;
+    })
+}
+
+let strings = ['apple', 'banana', 'kiwi']
+// console.log(findLongestString(strings));
+
+
+let findLong = (arr) => {
+    let currentLongest = arr[0];
+
+    arr.forEach((item) => {
+        if (item.length > currentLongest.length) {
+            currentLongest = item
+        }
+    })
+
+    return currentLongest;
+
+}
+
+console.log(findLong(strings));
+
+
+
 
 
 
@@ -55,7 +109,7 @@ let findLongestWord = (str) => {
 let vowelCounter = (word) => {
     let counter = 0;
 
-    for (let i = 0; i <= word.length; i++) {
+    for (let i = 0; i < word.length; i++) {
         if (word[i] == "a" || word[i] == "e" || word[i] == "i" || word[i] == "o" || word[i] == "u") {
             counter++;
         };
@@ -91,33 +145,19 @@ let vowelCounter = (word) => {
 // console.log(commonValues(["a", "a", "b", "b", "c", "y"], ["a", "a", "b", "b", "c", "z"]));
 
 
-const commonValues = (arr1, arr2) => {
-    let matches = [];
-    let uniqueChars = [];
 
-    if (arr1.length >= arr2.length) {
-        for (let i = 0; i < arr1.length; i++) {
-            if (arr2.indexOf(arr1[i]) !== -1) {
-                matches.push(arr1[i]);
-            }
-        }
-    } else {
-        for (let i = 0; i < arr2.length; i++) {
-            if (arr1.indexOf(arr2[i]) !== -1) {
-                matches.push(arr2[i]);
-            }
+let sameVal = (arra1, arra2) => {
+    let common = []
+
+    for (let i = 0; i < arra1.length; i++) {
+        if (arra2.includes(arra1[i]) && !common.includes(arra1[i])) {
+            common.push(arra1[i])
         }
     }
-    matches.forEach((item) => {
-        if (!uniqueChars.includes(item)) {
-            uniqueChars.push(item);
-        }
-    });
-    return uniqueChars;
-};
+    return common;
+}
 
-// console.log(commonValues(["a", "a", "b", "b", "c", "y"], ["a", "a", "b", "b", "c", "z"]));
-
+console.log(sameVal(["a", "a", "b", "b", "c", "y"], ["a", "a", "b", "b", "c", "z"]));
 
 let commonVal = (arr1, arr2) => {
     let matches = [];
@@ -146,19 +186,6 @@ let commonVal = (arr1, arr2) => {
 // console.log(commonVal(["a", "a", "b", "b", "c", "y"], ["a", "a", "b", "b", "c", "z"]));
 
 
-let commonVals = (arr1, arr2) => {
-    let matches = [];
-
-    for (let i = 0; i < arr1.length; i++) {
-        if (arr2.indexOf(arr1[i]) !== -1) {
-            matches.push(arr1[i])
-        }
-    }
-
-    return matches;
-}
-
-console.log(commonVals(["a", "a", "b", "b", "c", "y"], ["a", "a", "b", "b", "c", "z"]));
 
 // 2 Write a function that returns the unique values of two arrays
 // let arr1 = ["a", "a", "b", "b", "c", "y"];
@@ -171,6 +198,19 @@ console.log(commonVals(["a", "a", "b", "b", "c", "y"], ["a", "a", "b", "b", "c",
 // console.log(removeDuplicates(arr1));
 // returns: [ 'a', 'b', 'c', 'y' ]
 
+let removeDuplicates = (arr) => {
+    let array = [];
+
+    arr.forEach((item) => {
+        if (!array.includes(item)) {
+            array.push(item);
+        }
+    })
+    return array;
+}
+
+console.log(removeDuplicates(['a', 'a', 'b', 'b', 'c']));
+
 // 4 Write a function that returns a string with vowels removed
 // console.log(removeVowels("Mitchell"));
 // returns: Mtchll
@@ -179,7 +219,7 @@ let removeVowels = (word) => {
     word = word.toLowerCase();
     let newWord = '';
 
-    for (let i = 0; i <= word.length; i++) {
+    for (let i = 0; i < word.length; i++) {
         if (word[i] !== "a" && word[i] !== "e" && word[i] !== "i" && word[i] !== "o" && word[i] !== "u") {
             newWord += word[i];
         }
@@ -308,8 +348,11 @@ let reverseString = (str) => {
 }
 
 
-// console.log(reverseString('racecar'));
+// console.log(reverseString('eye'));
 
 // Level Three
 // Write a function that determines whether two strings are an anagram
 // Two words are an anagram if the letters of one can be rearranged to form the other
+
+
+
